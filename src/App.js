@@ -1,19 +1,21 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, View, Text} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View, Text} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 const App = () => (
   <SafeAreaView>
-    <ScrollView contentInsetAdjustmentBehavior="automatic">
+    <StatusBar animated={true} backgroundColor="#00296b" />
+    <LinearGradient colors={['#00296b', '#3b599b', '#3b5998']}>
       <View style={styles.container}>
         <Text style={styles.textTitle}>Hello world</Text>
       </View>
-    </ScrollView>
+    </LinearGradient>
   </SafeAreaView>
 );
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '100%',
     flexDirection: 'column',
     alignItems: 'center',
     paddingVertical: 8,
@@ -22,6 +24,7 @@ const styles = StyleSheet.create({
 
   textTitle: {
     fontSize: 24,
+    color: '#FFF',
   },
 });
 
