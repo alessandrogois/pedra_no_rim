@@ -4,7 +4,7 @@ import { View, Text } from 'react-native'
 export const Config = () => {
     return (
         <View>
-            <Text></Text>
+            <Text>Config</Text>
         </View>
     )
 }

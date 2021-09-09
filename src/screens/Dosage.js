@@ -4,7 +4,7 @@ import { View, Text, Button } from 'react-native'
 export const Dosage = ({navigation}) => {
     return (
         <View>
-            <Text></Text>
+            <Text>Water Dosage</Text>
         </View>
     )
 }
