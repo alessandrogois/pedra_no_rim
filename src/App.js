@@ -1,16 +1,33 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, View, Text} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import {StyleSheet} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home } from './screens/Home';
+import { Config } from './screens/Config';
+import { Dosage } from './screens/Dosage';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => (
-  <SafeAreaView>
-    <StatusBar animated={true} backgroundColor="#00296b" />
-    <LinearGradient colors={['#00296b', '#3b599b', '#3b5998']}>
-      <View style={styles.container}>
-        <Text style={styles.textTitle}>Hello world</Text>
-      </View>
-    </LinearGradient>
-  </SafeAreaView>
+  <NavigationContainer>
+   <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ title: 'Welcome' }}
+        />
+        <Stack.Screen
+          name="Config"
+          component={Config}
+          options={{ title: 'Config' }}
+        />
+         <Stack.Screen
+          name="Dosage"
+          component={Dosage}
+          options={{ title: 'Dosage' }}
+        />
+      </Stack.Navigator>
+  </NavigationContainer>
 );
 
 const styles = StyleSheet.create({
