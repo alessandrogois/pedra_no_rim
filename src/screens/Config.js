@@ -1,10 +1,11 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import {View, Text, Button} from 'react-native';
 
-export const Config = () => {
-    return (
-        <View>
-            <Text>Config</Text>
-        </View>
-    )
-}
+export const Config = ({navigation}) => {
+  return (
+    <View>
+      <Text>Config</Text>
+      <Button title="Dosage" onPress={() => navigation.navigate('Dosage')} />
+    </View>
+  );
+};
