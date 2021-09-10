@@ -1,5 +1,6 @@
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home} from './screens/Home';
@@ -15,7 +16,7 @@ const App = () => (
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{title: 'Welcome'}}
+          options={{title: 'Welcome', headerShown: false}}
         />
         <Stack.Screen
           name="Config"
