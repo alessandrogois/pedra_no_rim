@@ -1,16 +1,11 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StatusBar,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
-import {Card, FAB, Portal} from 'react-native-paper';
+import React, {useContext} from 'react';
+import {View, Text, StatusBar, ScrollView, Dimensions} from 'react-native';
+import {Card, FAB, Portal, Button} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {AppContext} from '../App';
 
 export const Home = ({navigation}) => {
+  const {counter, increment, decrement} = useContext(AppContext);
   return (
     <View
       style={{
@@ -37,7 +32,9 @@ export const Home = ({navigation}) => {
             height: Dimensions.get('screen').height / 2,
             width: Dimensions.get('screen').width - 20,
           }}>
-          <Text>Teste</Text>
+          <Text style={{fontSize: 100}}>{counter}</Text>
+          <Button onPress={increment}> INC </Button>
+          <Button onPress={decrement}> DEC </Button>
         </Card>
         <Card
           style={{
@@ -68,7 +65,6 @@ export const Home = ({navigation}) => {
           bottom: 40,
           backgroundColor: 'white',
         }}
-        r
         icon="plus"
         color="#000099"
         onPress={() => navigation.navigate('Config')}
