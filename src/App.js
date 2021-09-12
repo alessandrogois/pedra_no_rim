@@ -1,6 +1,5 @@
 import React, {createContext, useState} from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home} from './screens/Home';

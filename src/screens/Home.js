@@ -1,165 +1,78 @@
 import React, {useContext} from 'react';
 import {
   View,
-  Text,
   StatusBar,
   ScrollView,
   Dimensions,
   ImageBackground,
+  StyleSheet,
 } from 'react-native';
-import {
-  Card,
-  FAB,
-  Portal,
-  Button,
-  Subheading,
-  Paragraph,
-  Title,
-} from 'react-native-paper';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {Card, FAB, Title} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../App';
-import drinkingBg from '../assets/drinking_bg.jpg';
+import {HeathTextCard} from './HeathTextCard';
 
 export const Home = ({navigation}) => {
   const {counter, increment, decrement} = useContext(AppContext);
   return (
-    <View
-      style={{
-        // backgroundColor: '#003399',
-        flexDirection: 'column',
-        flex: 1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}>
+    <View style={styles.container}>
       <ImageBackground
         source={require('../assets/drinking_bg.jpg')}
         resizeMode="cover"
-        style={{flex: 1, opacity: 0.95}}>
-        <StatusBar
-          backgroundColor="#042e87"
-          //translucent={true}
-          animated={true}
-        />
+        style={styles.imageBg}>
+        <StatusBar backgroundColor="#042e87" animated={true} />
+        <View style={styles.header}>
+          <Icon
+            name="gear"
+            size={24}
+            style={styles.icon}
+            color="#005BB0"
+            onPress={() => navigation.navigate('Config')}
+          />
+        </View>
         <ScrollView
           horizontal={true}
-          contentContainerStyle={{
-            width: `${100 * 3}%`,
-            height: 400,
-            marginBottom: 20,
-          }}
+          contentContainerStyle={styles.scrollVIew}
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={200}
           decelerationRate="fast"
           pagingEnabled>
-          <Card
-            style={{
-              margin: 10,
-              padding: 20,
-              elevation: 5,
-              borderRadius: 15,
-              height: 280,
-              width: Dimensions.get('screen').width - 20,
-              alignItems: 'center',
-            }}>
-            <Subheading style={{fontSize: 20}}>
-              A importância de beber água
-            </Subheading>
-            <Paragraph>
-              Nosso corpo é constituido de cerca de 60% a 70% de água. Nosso
-              sangue, músculos, pulmões e cérebro contém bastante água. Beber
-              bastante líquido é vital para a nossa saúde.
-            </Paragraph>
-          </Card>
-          <Card
-            style={{
-              margin: 10,
-              padding: 20,
-              elevation: 5,
-              borderRadius: 15,
-              height: 280,
-              width: Dimensions.get('screen').width - 20,
-              alignItems: 'center',
-            }}>
-            <Subheading style={{fontSize: 20}}>Seu corpo precisa!</Subheading>
-            <Paragraph>
-              Todas as células de nosso corpo necessitam de água. Nosso cérebro,
+          <HeathTextCard
+            title="A importância de beber água"
+            description="Nosso corpo é constituido de cerca de 60% a 70% de água.
+              Nosso sangue, músculos, pulmões e cérebro contém bastante água.
+              Beber bastante líquido é vital para a nossa saúde."
+          />
+          <HeathTextCard
+            title="Seu corpo precisa!"
+            description="Todas as células de nosso corpo necessitam de água. Nosso cérebro,
               por exemplo, consiste em 90% de água, portanto, se não suprimos
               corretamente a necessidade de água em nosso corpo, nosso cérebro
-              pode não funcionar bem, causando dores de cabeça e enxaqueca.
-            </Paragraph>
-          </Card>
-          <Card
-            style={{
-              margin: 10,
-              padding: 20,
-              elevation: 5,
-              borderRadius: 15,
-              height: 280,
-              width: Dimensions.get('screen').width - 20,
-              alignItems: 'center',
-            }}>
-            <Subheading style={{fontSize: 20}}>Seus rins!</Subheading>
-            <Paragraph>
-              A água é considerada o solvente universal e auxilia na liberação
-              das toxinas filtradas pelo rim, através da urina. A escassez de
-              água no organismo pode ser identificada através de alguns sintomas
-              como:
-            </Paragraph>
-            <Paragraph> - Mu​cosas secas;</Paragraph>
-            <Paragraph> - Pressão baixa;</Paragraph>
-            <Paragraph> - Ressecamento de pele;</Paragraph>
-            <Paragraph>
-              - Maior concentração da urina, o que a torna mais escassa e mais
-              escura.
-            </Paragraph>
-          </Card>
+              pode não funcionar bem, causando dores de cabeça e enxaqueca."
+          />
+          <HeathTextCard
+            title="Seus rins!"
+            description="A água é considerada o solvente universal e auxilia na liberação
+              das toxinas filtradas pelo rim, através da urina. "
+          />
         </ScrollView>
         <View>
-          <Card
-            style={{
-              margin: 10,
-              padding: 10,
-              height: 200,
-              borderRadius: 15,
-              opacity: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: Dimensions.get('screen').width - 20,
-            }}>
-            <Title style={{color: '#002299'}}>
+          <Card style={styles.infoCard}>
+            <Title style={styles.infoCardTitle}>
               Quantos copos você já bebeu hoje?
             </Title>
-            <Title
-              style={{
-                marginTop: 30,
-                color: '#002299',
-                textAlign: 'center',
-                fontSize: 90,
-                padding: 60,
-              }}>
-              {counter}
-            </Title>
+            <Title style={styles.counterText}>{counter}</Title>
           </Card>
         </View>
         <FAB
-          style={{
-            position: 'absolute',
-            right: 20,
-            bottom: 40,
-            backgroundColor: '#037ffc',
-          }}
+          style={styles.fabPlus}
           icon="plus"
           color="#fff"
           //onPress={() => navigation.navigate('Config')}
           onPress={increment}
         />
         <FAB
-          style={{
-            position: 'absolute',
-            left: 20,
-            bottom: 40,
-            backgroundColor: '#037ffc',
-          }}
+          style={styles.fabMinus}
           icon="minus"
           color="#fff"
           //onPress={() => navigation.navigate('Config')}
@@ -169,3 +82,67 @@ export const Home = ({navigation}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  fabMinus: {
+    position: 'absolute',
+    left: 20,
+    bottom: 40,
+    backgroundColor: '#037ffc',
+  },
+  fabPlus: {
+    position: 'absolute',
+    right: 20,
+    bottom: 40,
+    backgroundColor: '#037ffc',
+  },
+  counterText: {
+    marginTop: 30,
+    color: '#005BB0',
+    textAlign: 'center',
+    fontSize: 90,
+    padding: 60,
+  },
+  infoCardTitle: {
+    color: '#033A7E',
+    fontWeight: 'bold',
+  },
+  infoCard: {
+    margin: 10,
+    padding: 10,
+    height: 200,
+    borderRadius: 15,
+    elevation: 5,
+    opacity: 0.98,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('screen').width - 20,
+  },
+  scrollVIew: {
+    height: 400,
+    marginBottom: 20,
+  },
+  icon: {
+    marginRight: 20,
+    marginTop: 10,
+  },
+  header: {
+    width: '100%',
+    height: 40,
+    opacity: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    flexDirection: 'row',
+    alignContent: 'flex-end',
+  },
+  imageBg: {
+    flex: 1,
+    opacity: 0.98,
+  },
+  container: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
