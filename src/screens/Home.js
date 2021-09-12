@@ -10,7 +10,7 @@ import {
 import {Card, FAB, Title} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AppContext} from '../App';
-import {HeathTextCard} from './HeathTextCard';
+import {HeathTextCard} from '../components/HeathTextCard';
 
 export const Home = ({navigation}) => {
   const {counter, increment, decrement} = useContext(AppContext);
@@ -34,7 +34,7 @@ export const Home = ({navigation}) => {
           horizontal={true}
           contentContainerStyle={styles.scrollVIew}
           showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={200}
+          scrollEventThrottle={50}
           decelerationRate="fast"
           pagingEnabled>
           <HeathTextCard
