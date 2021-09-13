@@ -9,14 +9,20 @@ import {
 } from 'react-native';
 import {Card, FAB, Title} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppContext} from '../App';
 import {HeathTextCard} from '../components/HeathTextCard';
 
 export const Home = ({navigation}) => {
-  const {counter, increment, decrement} = useContext(AppContext);
+  const counter = useSelector(state => state.counter);
+  const dispatch = useDispatch();
+  const increment = () => dispatch({type: 'increment'});
+  const decrement = () => dispatch({type: 'decrement'});
+
   return (
     <View style={styles.container}>
       <ImageBackground
+        imageStyle={{opacity: 0.4}}
         source={require('../assets/drinking_bg.jpg')}
         resizeMode="cover"
         style={styles.imageBg}>
