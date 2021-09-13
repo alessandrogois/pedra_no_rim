@@ -22,7 +22,7 @@ export const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        imageStyle={{opacity: 0.4}}
+        imageStyle={{opacity: 0.1}}
         source={require('../assets/drinking_bg.jpg')}
         resizeMode="cover"
         style={styles.imageBg}>

@@ -6,9 +6,13 @@ export const HeathTextCard = props => {
   const {width} = Dimensions.get('window');
 
   return (
-    <Card style={[{width: width - 20}, styles.cardContainer]}>
+    <Card
+      style={[
+        {width: width - 20, borderColor: '#002266', borderWidth: 0.8},
+        styles.cardContainer,
+      ]}>
       <Subheading style={styles.title}>{props.title}</Subheading>
-      <Paragraph>{props.description}</Paragraph>
+      <Paragraph style={styles.paragraph}>{props.description}</Paragraph>
       <ImageBackground
         source={require('../assets/cup.png')}
         height={100}
@@ -27,10 +31,15 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#033A7E',
+  },
+  paragraph: {
+    fontSize: 16,
+    textAlign: 'justify',
+    marginHorizontal: 10,
   },
   cardContainer: {
     margin: 10,
