@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   View,
   StatusBar,
@@ -15,9 +15,29 @@ import {HeathTextCard} from '../components/HeathTextCard';
 
 export const Home = ({navigation}) => {
   const counter = useSelector(state => state.counter);
+  const [progressColor, setprogresscolor] = useState('red');
   const dispatch = useDispatch();
   const increment = () => dispatch({type: 'increment'});
   const decrement = () => dispatch({type: 'decrement'});
+
+  useEffect(() => {
+    if (counter <= 2) {
+      setprogresscolor('red');
+      return;
+    }
+    if (counter <= 4) {
+      setprogresscolor('#ff6600');
+      return;
+    }
+    if (counter <= 6) {
+      setprogresscolor('#ffcc00');
+      return;
+    }
+    if (counter <= 8) {
+      setprogresscolor('#037ffc');
+      return;
+    }
+  }, [counter]);
 
   return (
     <View style={styles.container}>
@@ -72,7 +92,7 @@ export const Home = ({navigation}) => {
           }}>
           <ProgressBar
             progress={(counter * 12.5) / 100}
-            color={counter < 4 ? 'red' : '#037ffc'}
+            color={progressColor}
             style={{
               height: 45,
               borderRadius: 15,

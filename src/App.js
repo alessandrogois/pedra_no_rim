@@ -10,7 +10,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 const initialState = {
-  counter: 1,
+  counter: 0,
 };
 
 export const reducer = (state = initialState, action) => {
