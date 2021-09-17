@@ -7,7 +7,7 @@ import {
   ImageBackground,
   StyleSheet,
 } from 'react-native';
-import {Card, FAB, Title} from 'react-native-paper';
+import {Card, FAB, Title, ProgressBar} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppContext} from '../App';
@@ -30,7 +30,7 @@ export const Home = ({navigation}) => {
         <View style={styles.header}>
           <Icon
             name="gear"
-            size={24}
+            size={25}
             style={styles.icon}
             color="#005BB0"
             onPress={() => navigation.navigate('Config')}
@@ -62,6 +62,23 @@ export const Home = ({navigation}) => {
               das toxinas filtradas pelo rim, através da urina. "
           />
         </ScrollView>
+        <View
+          style={{
+            paddingHorizontal: 40,
+            flex: 3,
+            marginVertical: 40,
+            marginBottom: 80,
+            justifyContent: 'center',
+          }}>
+          <ProgressBar
+            progress={(counter * 12.5) / 100}
+            color={counter < 4 ? 'red' : '#037ffc'}
+            style={{
+              height: 45,
+              borderRadius: 15,
+            }}
+          />
+        </View>
         <View>
           <Card style={styles.infoCard}>
             <Title style={styles.infoCardTitle}>
@@ -73,15 +90,15 @@ export const Home = ({navigation}) => {
         <FAB
           style={styles.fabPlus}
           icon="plus"
+          disabled={counter === 8 ? true : false}
           color="#fff"
-          //onPress={() => navigation.navigate('Config')}
           onPress={increment}
         />
         <FAB
           style={styles.fabMinus}
           icon="minus"
+          disabled={counter === 0 ? true : false}
           color="#fff"
-          //onPress={() => navigation.navigate('Config')}
           onPress={decrement}
         />
       </ImageBackground>
@@ -125,12 +142,12 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width - 20,
   },
   scrollVIew: {
-    height: 400,
-    marginBottom: 20,
+    height: 280,
+    marginBottom: 40,
   },
   icon: {
-    marginRight: 20,
-    marginTop: 10,
+    marginRight: 15,
+    marginTop: 15,
   },
   header: {
     width: '100%',

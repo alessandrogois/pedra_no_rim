@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 5,
     borderRadius: 15,
-    height: 280,
+    height: 250,
     opacity: 0.98,
     alignItems: 'center',
   },
