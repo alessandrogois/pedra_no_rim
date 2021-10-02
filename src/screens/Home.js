@@ -35,7 +35,7 @@ export const Home = ({navigation}) => {
     }
     if (counter <= 8) {
       setprogresscolor('#037ffc');
-      return;
+      return
     }
   }, [counter]);
 
